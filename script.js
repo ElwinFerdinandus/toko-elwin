@@ -6,7 +6,6 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlha2h1YXBsc2Zrc2Rob2VydWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk4OTExNjgsImV4cCI6MjA2NTQ2NzE2OH0.Ykfb5EP3zXM0BEUpRWw0vOIlr8NoJZpSTfB2GWUHZ1Y"
 );
 
-// Fungsi tambah data
 async function tambahBarang() {
   const nama_barang = document.getElementById("nama_barang").value;
   const stok = document.getElementById("stok").value;
@@ -28,7 +27,6 @@ async function tambahBarang() {
   loadData();
 }
 
-// Fungsi hapus data
 async function deleteBarang(id) {
   const konfirmasi = confirm("Yakin ingin menghapus barang ini?");
   if (!konfirmasi) return;
@@ -40,7 +38,6 @@ async function deleteBarang(id) {
   loadData();
 }
 
-// Fungsi tampilkan data
 async function loadData() {
   const { data, error } = await supabase.from("barang").select("*");
 
@@ -58,16 +55,20 @@ async function loadData() {
 
     col.innerHTML = `
       <div class="card shadow-sm h-100">
-        <div class="card-body">
-          <h5 class="card-title text-primary">
-            <i class="bi bi-box-seam"></i> ${item.nama_barang}
-          </h5>
-          <p><strong>Stok:</strong> ${item.stok}</p>
-          <p><strong>Satuan:</strong> ${item.satuan}</p>
-          <p><strong>Deskripsi:</strong><br>${item.deskripsi}</p>
-          <button class="btn btn-sm btn-danger mt-2" onclick="deleteBarang(${item.id})">
-            <i class="bi bi-trash"></i> Hapus
-          </button>
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="card-title text-primary">
+              <i class="bi bi-box-seam"></i> ${item.nama_barang}
+            </h5>
+            <p><strong>Stok:</strong> ${item.stok}</p>
+            <p><strong>Satuan:</strong> ${item.satuan}</p>
+            <p><strong>Deskripsi:</strong><br>${item.deskripsi}</p>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-sm btn-danger mt-3" onclick="deleteBarang(${item.id})">
+              <i class="bi bi-trash"></i> Hapus
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -76,7 +77,6 @@ async function loadData() {
   });
 }
 
-// Bersihkan form input
 function clearForm() {
   document.getElementById("nama_barang").value = "";
   document.getElementById("stok").value = "";
@@ -84,9 +84,6 @@ function clearForm() {
   document.getElementById("deskripsi").value = "";
 }
 
-// Ekspor fungsi agar bisa diakses di HTML
 window.tambahBarang = tambahBarang;
 window.deleteBarang = deleteBarang;
-
-// Muat data saat pertama kali dibuka
 loadData();
