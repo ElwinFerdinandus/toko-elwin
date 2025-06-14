@@ -21,18 +21,29 @@ async function tambahBarang() {
 
 async function loadData() {
   const { data, error } = await supabase.from("barang").select("*");
-  if (error) return alert("Data gagal diambil " + error.message);
+  if (error) return alert("Data gagal diambil: " + error.message);
+
   const list = document.getElementById("list");
   list.innerHTML = "";
+
   data.forEach((item) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-        <td>${item.nama_barang}</td>
-        <td>${item.stok}</td>
-        <td>${item.satuan}</td>
-        <td>${item.deskripsi}</td>
-      `;
-    list.appendChild(row);
+    const col = document.createElement("div");
+    col.className = "col-md-4 mb-4";
+
+    col.innerHTML = `
+      <div class="card card-barang h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title text-primary">
+            <i class="bi bi-box"></i> ${item.nama_barang}
+          </h5>
+          <p class="mb-1"><strong><i class="bi bi-123"></i> Stok:</strong> ${item.stok}</p>
+          <p class="mb-1"><strong><i class="bi bi-tag"></i> Satuan:</strong> ${item.satuan}</p>
+          <p class="mb-0"><strong><i class="bi bi-card-text"></i> Deskripsi:</strong><br>${item.deskripsi}</p>
+        </div>
+      </div>
+    `;
+
+    list.appendChild(col);
   });
 }
 
