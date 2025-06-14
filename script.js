@@ -21,7 +21,11 @@ async function tambahBarang() {
 
 async function loadData() {
   const { data, error } = await supabase.from("barang").select("*");
-  if (error) return alert("Data gagal diambil: " + error.message);
+
+  if (error) {
+    alert("Gagal mengambil data: " + error.message);
+    return;
+  }
 
   const list = document.getElementById("list");
   list.innerHTML = "";
@@ -31,16 +35,14 @@ async function loadData() {
     col.className = "col-md-4 mb-4";
 
     col.innerHTML = `
-      <div class="card shadow h-100">
+      <div class="card shadow-sm h-100">
         <div class="card-body">
-          <h5 class="card-title text-primary">
+          <h5 class="card-title text-primary mb-2">
             <i class="bi bi-box-seam"></i> ${item.nama_barang}
           </h5>
-          <ul class="list-unstyled mb-0">
-            <li><strong>Stok:</strong> ${item.stok}</li>
-            <li><strong>Satuan:</strong> ${item.satuan}</li>
-            <li><strong>Deskripsi:</strong><br>${item.deskripsi}</li>
-          </ul>
+          <p class="mb-1"><strong>Stok:</strong> ${item.stok}</p>
+          <p class="mb-1"><strong>Satuan:</strong> ${item.satuan}</p>
+          <p class="mb-0"><strong>Deskripsi:</strong><br>${item.deskripsi}</p>
         </div>
       </div>
     `;
@@ -48,7 +50,6 @@ async function loadData() {
     list.appendChild(col);
   });
 }
-
 
 window.tambahBarang = tambahBarang;
 loadData();
