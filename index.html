@@ -3,67 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data barang</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <title>Data Barang - Elwin Shop</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand d-flex gap-3" href="#" >
-            <img src="./image.png" alt="" width="80px" class="w-full d-inline-block align-text-top">
-            <h2 class="mt-4" style="color: cadetblue;">
-                ELWIN SHOP
-            </h2>
-          </a>
-        </div>
-      </nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-light shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+          <img src="./image.png" alt="Logo" width="50" class="d-inline-block align-text-top" />
+          <h4 class="mb-0 text-primary fw-bold">ELWIN SHOP <i class="bi bi-shop"></i></h4>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Form Input -->
     <div class="container mt-5">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h4 class="text-center">
-                    TAMBAH DATA BARANG
-                </h4>
-            </div>
-            <div class="card-body">  
-                <label for="">Nama Barang</label>           
-                <input type="text" id="nama_barang" placeholder="masukkan nama barang" class="form-control"/>
-                <label for="" class="mt-2"> Stok Barang</label>
-                <input type="number" class="form-control" id="stok" placeholder="masukkan stok barang" />
-                <label for="" class="mt-2"> Satuan Barang</label>
-                <select name="satuan" id="satuan" class="form-select">
-                  <option value="" disabled selected>pilih satuan</option>
-                  <option value="pcs">pcs</option>
-                  <option value="kg">kg</option>
-                </select>
-                <label for="" class="mt-2"> Deskripsi Barang</label>
-                <textarea name="" id="deskripsi" class="form-control"></textarea>
-                <div class="d-flex justify-content-end mt-3">
-                    <button onclick="tambahBarang()" class="btn btn-primary">tambah</button>
-                </div>
-            </div>
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h5><i class="bi bi-box-seam"></i> Tambah Data Barang</h5>
         </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="nama_barang" class="form-label">Nama Barang</label>
+            <input type="text" id="nama_barang" class="form-control" placeholder="Masukkan nama barang" />
+          </div>
+          <div class="mb-3">
+            <label for="stok" class="form-label">Stok Barang</label>
+            <input type="number" id="stok" class="form-control" placeholder="Masukkan stok barang" />
+          </div>
+          <div class="mb-3">
+            <label for="satuan" class="form-label">Satuan Barang</label>
+            <select id="satuan" class="form-select">
+              <option value="" disabled selected>Pilih satuan</option>
+              <option value="pcs">pcs</option>
+              <option value="kg">kg</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="deskripsi" class="form-label">Deskripsi Barang</label>
+            <textarea id="deskripsi" class="form-control" rows="3" placeholder="Deskripsi barang..."></textarea>
+          </div>
+          <div class="text-end">
+            <button onclick="tambahBarang()" class="btn btn-primary">
+              <i class="bi bi-plus-circle"></i> Tambah
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class=" container mt-5">
-      <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr class="bg-primary text-white">
-                    <th>Nama Barang</th>
-                    <th>Stok Barang</th>
-                    <th>Satuan Barang</th>
-                    <th>Deskripsi Barang</th>
-                </tr>
-            </thead>
-            <tbody id="list">
-                
-            </thead>
+
+    <!-- Tabel Data -->
+    <div class="container mt-5">
+      <div class="table-responsive shadow-sm">
+        <table class="table table-bordered table-striped">
+          <thead class="bg-primary text-white text-center">
+            <tr>
+              <th><i class="bi bi-box"></i> Nama Barang</th>
+              <th><i class="bi bi-123"></i> Stok</th>
+              <th><i class="bi bi-tag"></i> Satuan</th>
+              <th><i class="bi bi-card-text"></i> Deskripsi</th>
+            </tr>
+          </thead>
+          <tbody id="list">
+            <!-- Isi akan ditambahkan dari JavaScript -->
+          </tbody>
         </table>
+      </div>
     </div>
-    </div>
+
+    <!-- Script -->
     <script type="module" src="./script.js"></script>
   </body>
 </html>
