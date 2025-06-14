@@ -53,25 +53,41 @@ async function loadData() {
     const col = document.createElement("div");
     col.className = "col-md-6 mb-4";
 
-    col.innerHTML = `
-      <div class="card h-100 shadow-sm">
-        <div class="card-body d-flex flex-column justify-content-between">
-          <div>
-            <h5 class="card-title text-primary">
-              <i class="bi bi-box-seam"></i> ${item.nama_barang}
-            </h5>
-            <p><strong>Stok:</strong> ${item.stok}</p>
-            <p><strong>Satuan:</strong> ${item.satuan}</p>
-            <p><strong>Deskripsi:</strong><br>${item.deskripsi}</p>
+  col.innerHTML = `
+  <div class="card shadow-sm border-0 h-100">
+    <div class="card-body d-flex flex-column justify-content-between">
+      <div>
+        <h5 class="card-title mb-3">
+          <i class="bi bi-box-seam text-primary"></i>
+          <span class="text-dark fw-bold">${item.nama_barang}</span>
+        </h5>
+        <div class="row">
+          <div class="col-6 mb-2">
+            <span class="badge bg-success">
+              <i class="bi bi-123"></i> Stok: ${item.stok}
+            </span>
           </div>
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-sm btn-danger mt-3" onclick="deleteBarang(${item.id})">
-              <i class="bi bi-trash-fill"></i> Hapus
-            </button>
+          <div class="col-6 mb-2">
+            <span class="badge bg-warning text-dark">
+              <i class="bi bi-bounding-box-circles"></i> ${item.satuan}
+            </span>
+          </div>
+          <div class="col-12 mt-2">
+            <div class="text-muted small">
+              <i class="bi bi-stickies"></i> ${item.deskripsi}
+            </div>
           </div>
         </div>
       </div>
-    `;
+      <div class="d-flex justify-content-end mt-3">
+        <button class="btn btn-outline-danger btn-sm" onclick="deleteBarang(${item.id})">
+          <i class="bi bi-trash"></i> Hapus
+        </button>
+      </div>
+    </div>
+  </div>
+`;
+
 
     list.appendChild(col);
   });
