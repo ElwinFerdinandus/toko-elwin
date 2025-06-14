@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Data Barang - Elwin Shop</title>
+  <title>Elwin Shop - Data Barang</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,19 +11,22 @@
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
+  <!-- Styling tambahan -->
   <style>
     body {
       background-color: #f8f9fa;
     }
-    .card-barang {
-      transition: transform 0.2s;
+    .card:hover {
+      transform: scale(1.02);
+      transition: all 0.3s ease-in-out;
     }
-    .card-barang:hover {
-      transform: scale(1.03);
+    textarea {
+      resize: none;
     }
   </style>
 </head>
 <body>
+
   <!-- Navbar -->
   <nav class="navbar navbar-light bg-white shadow-sm">
     <div class="container-fluid">
@@ -34,11 +37,11 @@
     </div>
   </nav>
 
-  <!-- Form Tambah Data -->
+  <!-- Form Tambah Barang -->
   <div class="container mt-5">
     <div class="card shadow-sm">
       <div class="card-header bg-primary text-white text-center">
-        <h5><i class="bi bi-box-seam"></i> Tambah Data Barang</h5>
+        <h5><i class="bi bi-plus-circle"></i> Tambah Data Barang</h5>
       </div>
       <div class="card-body">
         <div class="row g-3">
@@ -65,22 +68,20 @@
         </div>
         <div class="text-end mt-3">
           <button class="btn btn-success" onclick="tambahBarang()">
-            <i class="bi bi-plus-circle"></i> Tambah Barang
+            <i class="bi bi-save2"></i> Simpan
           </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- List Barang (dari JS) -->
+  <!-- Daftar Barang (dari script eksternal) -->
   <div class="container mt-5">
-    <h5 class="text-primary mb-3"><i class="bi bi-card-list"></i> Daftar Barang</h5>
+    <h5 class="text-primary mb-3"><i class="bi bi-boxes"></i> Daftar Barang</h5>
     <div class="row" id="list">
-      <!-- Data barang akan dimunculkan di sini oleh script.js -->
+      <!-- Card akan ditampilkan di sini oleh script eksternal -->
     </div>
   </div>
 
-  <!-- JS eksternal -->
-  <script type="module" src="./script.js"></script>
 </body>
 </html>
