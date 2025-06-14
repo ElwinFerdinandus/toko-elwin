@@ -1,9 +1,9 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-// Inisialisasi Supabase
+// Supabase setup
 const supabase = createClient(
   "https://yakhuaplsfksdhoerubc.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlha2h1YXBsc2Zrc2Rob2VydWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk4OTExNjgsImV4cCI6MjA2NTQ2NzE2OH0.Ykfb5EP3zXM0BEUpRWw0vOIlr8NoJZpSTfB2GWUHZ1Y"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 );
 
 async function tambahBarang() {
@@ -28,8 +28,8 @@ async function tambahBarang() {
 }
 
 async function deleteBarang(id) {
-  const konfirmasi = confirm("Yakin ingin menghapus barang ini?");
-  if (!konfirmasi) return;
+  const confirmDelete = confirm("Yakin ingin menghapus barang ini?");
+  if (!confirmDelete) return;
 
   const { error } = await supabase.from("barang").delete().eq("id", id);
   if (error) return alert("Gagal menghapus data: " + error.message);
@@ -51,10 +51,10 @@ async function loadData() {
 
   data.forEach((item) => {
     const col = document.createElement("div");
-    col.className = "col-md-4 mb-4";
+    col.className = "col-md-6 mb-4";
 
     col.innerHTML = `
-      <div class="card shadow-sm h-100">
+      <div class="card h-100 shadow-sm">
         <div class="card-body d-flex flex-column justify-content-between">
           <div>
             <h5 class="card-title text-primary">
@@ -66,7 +66,7 @@ async function loadData() {
           </div>
           <div class="d-flex justify-content-end">
             <button class="btn btn-sm btn-danger mt-3" onclick="deleteBarang(${item.id})">
-              <i class="bi bi-trash"></i> Hapus
+              <i class="bi bi-trash-fill"></i> Hapus
             </button>
           </div>
         </div>
