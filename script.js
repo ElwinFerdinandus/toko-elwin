@@ -31,14 +31,16 @@ async function loadData() {
     col.className = "col-md-4 mb-4";
 
     col.innerHTML = `
-      <div class="card card-barang h-100 shadow-sm">
+      <div class="card shadow h-100">
         <div class="card-body">
           <h5 class="card-title text-primary">
-            <i class="bi bi-box"></i> ${item.nama_barang}
+            <i class="bi bi-box-seam"></i> ${item.nama_barang}
           </h5>
-          <p class="mb-1"><strong><i class="bi bi-123"></i> Stok:</strong> ${item.stok}</p>
-          <p class="mb-1"><strong><i class="bi bi-tag"></i> Satuan:</strong> ${item.satuan}</p>
-          <p class="mb-0"><strong><i class="bi bi-card-text"></i> Deskripsi:</strong><br>${item.deskripsi}</p>
+          <ul class="list-unstyled mb-0">
+            <li><strong>Stok:</strong> ${item.stok}</li>
+            <li><strong>Satuan:</strong> ${item.satuan}</li>
+            <li><strong>Deskripsi:</strong><br>${item.deskripsi}</li>
+          </ul>
         </div>
       </div>
     `;
@@ -46,6 +48,7 @@ async function loadData() {
     list.appendChild(col);
   });
 }
+
 
 window.tambahBarang = tambahBarang;
 loadData();
